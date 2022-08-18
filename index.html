@@ -9,31 +9,50 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/9005a12b78.js" crossorigin="anonymous"></script>
     <style>
+        body{
+            position: relative;
+        }
         @media (max-width: 767px){
             .text{
                 text-align: center;
             }
             
         }
-
-        .full{
+        /* body::before {
+            display: block;
+            content: '';
+            height: 100px;
+        } */
+        .scroll-area{
             width: 100%;
-            min-height: 100vh;
-            background: url("img/white.jpg") center / cover;
-            background-attachment: fixed;
+            height: 100vh;
+            -webkit-scroll-behavior: smooth;
+            scroll-behavior: smooth;
+            -webkit-scroll-snap-type: mandatory;
+            scroll-snap-type: mandatory;
+            -webkit-scroll-snap-points-y: repeat(100%);
+            scroll-snap-points-y: repeat(100%);
         }
-        .wall{
-            padding-top: 50%;
-            padding-bottom: 50%;
+        .box{
+            width: 100%;
+            height: 100vh;
+            color: #45404062;
+            font-size: 100px;
+            display: flex;
+            align-items: center; /* 縦方向中央揃え */
+            justify-content: center; /* 横方向中央揃え */
+            flex-direction: column;
         }
         .welcome {
             text-align: center;
         }
-
+        .section {
+            width: 100%;
+            height: auto;
+        }
         .arrow {
             text-align: center;
         }
-
         .font{
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
             font-style: normal;
@@ -42,8 +61,41 @@
             line-height: 23px;
             color: #212529;
         }
+        .textarea{
+            width: 100%;
+            border-color: #CED4DA;
+            border-radius: 5px;
+        }
+        .textarea::placeholder {
+            vertical-align: middle;
+            padding-left: 8px;
+            padding-top: 8px;
+        }
+        .submit{
+            width: 100%;
+            border: 1px solid #CED4DA;
+            border-radius: 5px;
+            color: #9e9e9e;
+            background-color: #ebebeb;
+        }
+        #cover{
+            background-image: url(img/beige.jpg);
+        }
+        #about{
+            /* background-color: bisque; */
+            
+        }
+        #experience{
+            /* background-color: rgb(161, 208, 248); */
+           
+        }
         #contact{
-            margin-bottom: 60px;
+            /* background-color: rgb(250, 225, 239); */
+            
+        }
+        #gallery{
+            /* background-color: rgb(78, 30, 108); */
+            margin-bottom: 50px;
         }
     </style>
 </head>
@@ -51,7 +103,7 @@
 
     <!-- navbar -->
 
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 sticky-top">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
         <div class="container">
             <a href="#" class="navbar-brand">Yutaro Okuda</a>
 
@@ -70,99 +122,126 @@
                     <li class="nav-item">
                         <a href="#contact" class="nav-link">Contact</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a href="#gallery" class="nav-link">Gallery</a>
+                    </li> -->
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- wallpaper -->
+    <!-- scroll -->
 
-    <section class="full">
-        <div class="wall">
-            <div class="h1 welcome">Welcome</div>
-            <div class="h1 arrow"><i class="bi bi-file-arrow-down"></i></i></div>
-        </div>
+    <div class="scroll-area">
+
+    <!-- wallpaper -->
+    <section id="cover" class="p-5 box">
+        <div class="h1 welcome">Welcome</div>
+        <div class="h1 arrow"><a href="#about" class="nav-link"><i class="bi bi-file-arrow-down"></i></a></div>
+    </section>
     <!-- About -->
 
-        <section id="about" class="p-5">
-            <div class="container">
-                <div class="row align-items-center justify-content-between">
-                    <div class="col-md text-center">
-                        <img src="img/self.png" class="img-fluid w-50" alt="">
-                    </div>
-                    <div class="col-md p-5  text ">
-                        <h2 >Hi, there. I'm Yutaro Okuda.</h2>
-                        <p class="lead mt-4">
-                            Born and raised in Japan and now live in Cebu.
-                        </p>
-                        <p class="mt-4">
-                            "We are healed of a suffering only by experiencing it to the full." - Marcel Proust<br />
-                        </p>
-                    </div>
+    <section id="about" class="p-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md text-center">
+                    <img src="img/self.png" class="img-fluid w-50" alt="">
+                </div>
+                <div class="col-md p-5  text ">
+                    <h2 >Hi, there. I'm Yutaro Okuda.</h2>
+                    <p class="lead mt-4">
+                        Born and raised in Japan and now live in Cebu.
+                    </p>
+                    <p class="mt-4">
+                        "We are healed of a suffering only by experiencing it to the full." - Marcel Proust<br />
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Experience -->
+    <!-- Experience -->
 
         
-            <section id="experience" class="p-5">
-                <div class="container">
-                    <div class="row align-items-center justify-content-between experience">
-                        <div class="col-md text-center">
-                            <img src="img/children.svg" class="img-fluid w-50" alt="">
-                        </div>
-                        <div class="col-md p-5  text">
-                            <h2>Years of Experience</h2>
-                                <div class="years mt-4">
-                                    <p class="lead">
-                                        Tennis &nbsp; 20+
-                                    </p>
-                                    <p>
-                                        Favorite Player: Kei Nishikori
-                                    </p>
-                                </div>
-                                <div class="years mt-4">
-                                    <p class="lead">
-                                        Working at School &nbsp; 5+
-                                    </p>
-                                    <p>
-                                        I really like to see kids focusing on something.
-                                    </p>
-                                </div>
-                        </div>
-                        
-                    </div>
+    <section id="experience" class="p-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between experience">
+                <div class="col-md text-center">
+                    <img src="img/children.svg" class="img-fluid w-50" alt="">
                 </div>
-            
-            </section>
-     
-
-    <!-- Contact -->
-
-        <section id="contact" class="p-5">
-            <div class="container">
-                <div class="row align-items-center justify-content-between">
-                    <div class="col-md text-center">
-                        <img src="img/contact.svg" class="img-fluid w-50" alt="">
-                    </div>
-                    <div class="col-md p-5  text">
-                        <h2>Contact</h2>
-                        <div class="lead mt-4">
-                            <i class="bi bi-envelope"><span class="font">&nbsp;&nbsp;okuda.fdc@gmail.com</span></i>
+                <div class="col-md p-5  text">
+                    <h2>Years of Experience</h2>
+                        <div class="years mt-4">
+                            <p class="lead">
+                                Tennis &nbsp; 20+
+                            </p>
+                            <p>
+                                Favorite Player: Kei Nishikori
+                            </p>
                         </div>
-                        <div class="lead mt-4">
-                            <i class="bi bi-geo-alt"><span class="font">&nbsp;&nbsp;Cebu, Philippines</span></i>
+                        <div class="years mt-4">
+                            <p class="lead">
+                                Working at School &nbsp; 5+
+                            </p>
+                            <p>
+                                I really like to see kids focusing on something.
+                            </p>
                         </div>
-                    </div>
                 </div>
+                
             </div>
-        </section>
+        </div>
+    
     </section>
 
 
+    <!-- Contact -->
+
+    <section id="contact" class="p-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md text-center">
+                    <img src="img/contact.svg" class="img-fluid w-50" alt="">
+                </div>
+                <div class="col-md p-5  text">
+                    <h2>Contact</h2>
+                    <!-- <div class="lead"><p>SNS</p></div> -->
+                    <div class="lead mt-4"><p>SNS</p></div>
+                    <div class="h2 mt-3 mb-4"><a href="https://www.facebook.com/yutarou"><i class="bi bi-facebook"></i></a></div>
+                    <div class="lead"><p>Form</p></div>
+                    <form action="" method="post">
+                            <input type="text" class="form-control my-3 name" placeholder="Name" id="name">
+                            <input type="text" class="form-control email" placeholder="Email" id="email">
+                            <textarea class="textarea my-3" placeholder="Message"></textarea>
+                            <input type="submit" class="submit" value="Submit">
+                    </form>
+                    <!-- <button class="btn btn-light btn-sm border border-secondary" data-bs-toggle="modal" data-bs-target="#enroll">Message</button> -->
+                    <!-- <h2>Contact</h2>
+                    <div class="lead mt-4">
+                        <i class="bi bi-envelope"><span class="font">&nbsp;&nbsp;okuda.fdc@gmail.com</span></i>
+                    </div>
+                    <div class="lead mt-4">
+                        <i class="bi bi-geo-alt"><span class="font">&nbsp;&nbsp;Cebu, Philippines</span></i>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- </section> -->
+
+    <!-- gallery -->
+    <section id="gallery" class="p-5">
+        <div class="container">
+            <h2 class="text-center">Gallery</h2>
+            <div class="row text-center">
+                <div class="col-md  g-4"><img src="img/japan.jpg" class="img-fluid" alt=""></div>
+                <div class="col-md  g-4"><img src="img/cebu.jpg" class="img-fluid" alt=""></div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Footer -->
-    <footer class="p-3 bg-dark text-white text-center fixed-bottom mt-5">
+    <footer class="p-3 bg-dark text-white text-center mt-5 position-relative">
         <div class="container">
             <p class="lead">
                 Copyright &copy; 2022 Yutaro Okuda
@@ -172,6 +251,10 @@
             </a>
         </div>
     </footer>
+
+    <!-- scroll -->
+
+</div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
